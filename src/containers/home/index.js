@@ -9,7 +9,10 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getHomeList()
+    // 如果有内容 则不会请求数据
+    if (!this.props.list.length) {
+      this.props.getHomeList()
+    }
   }
 
   click () {

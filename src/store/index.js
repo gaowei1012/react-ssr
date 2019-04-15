@@ -9,8 +9,12 @@ const reducer = combineReducers({
 })
 
 // 导出一个createStore方法，保证每个用户的store是唯一的
-const getStore = () => {
+export const getStore = () => {
   return createStore(reducer, applyMiddleware(thunk, logger))
 }
 
-export default  getStore
+// get client store 
+export const getClientStore = () => {
+  const defaultState = window.context.state
+  return createStore(reducer, defaultState, applyMiddleware(thunk, logger))
+}

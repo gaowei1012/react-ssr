@@ -2,7 +2,7 @@ import express from 'express'
 import { port } from '../../config/config.defult'
 import { matchRoutes } from 'react-router-config'
 import { render } from './../utils/utils'
-import getStore from '../store'
+import { getStore } from '../store'
 import routes from '../Routes'
 
 const app = express()
