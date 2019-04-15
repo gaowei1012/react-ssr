@@ -11,7 +11,7 @@ class Home extends React.Component {
   componentDidMount() {
     // 如果有内容 则不会请求数据
     if (!this.props.list.length) {
-      this.props.getHomeList(false)
+      this.props.getHomeList()
     }
   }
 
@@ -38,7 +38,7 @@ class Home extends React.Component {
 }
 
 Home.loadData = (store) => {
-  return store.dispatch(getHomeList(true))
+  return store.dispatch(getHomeList())
 }
 
 const mapStateToProps = state => ({
