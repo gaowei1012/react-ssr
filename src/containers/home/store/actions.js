@@ -9,7 +9,7 @@ const changeList = (list) => ({
 
 export const getHomeList = () => {
   return (dispatch) => {
-    axios.get('http://localhost:3001/api/user')
+    return axios.get('http://localhost:3001/api/user')
       .then((res) => {
         // console.log(res.data.data)
         const list = res.data.data

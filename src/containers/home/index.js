@@ -34,6 +34,10 @@ class Home extends React.Component {
   }
 }
 
+Home.loadData = (store) => {
+  return store.dispatch(getHomeList())
+}
+
 const mapStateToProps = state => ({
   name: state.home.name,
   list: state.home.newList
