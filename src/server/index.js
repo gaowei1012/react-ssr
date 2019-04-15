@@ -1,12 +1,21 @@
 import express from 'express'
 import { port } from '../../config/config.defult'
 import { matchRoutes } from 'react-router-config'
+import proxy from 'express-http-proxy'
 import { render } from './../utils/utils'
 import { getStore } from '../store'
 import routes from '../Routes'
 
 const app = express()
 app.use(express.static('public'))
+
+// 转发
+app.use('/api', proxy('http://localhost:3001', {
+  proxyReqPathResolver: (req) => {
+    // console.log(req.url)
+    return '/api' + req.url
+  }
+}))
 
 app.get('*', (req, res) => {
 

@@ -7,9 +7,18 @@ const changeList = (list) => ({
   list: list
 })
 
-export const getHomeList = () => {
+export const getHomeList = (server) => {
+
+  // 判断是否是服务端渲染
+  let url = ''
+  if (server) {
+    url = 'http://localhost:3001/api/newList'
+  } else {
+    url = '/api/newList'
+  }
+
   return (dispatch) => {
-    return axios.get('http://localhost:3001/api/newList')
+    return axios.get(url)
       .then((res) => {
         // console.log(res.data.data)
         const list = res.data.data
